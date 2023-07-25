@@ -155,6 +155,7 @@ public abstract class AbstractEngineConfiguration {
 
     protected boolean forceCloseMybatisConnectionPool = true;
 
+    // 数据库连接信息
     protected String databaseType;
     protected String jdbcDriver = "org.h2.Driver";
     protected String jdbcUrl = "jdbc:h2:tcp://localhost/~/flowable";
@@ -185,11 +186,17 @@ public abstract class AbstractEngineConfiguration {
 
     // COMMAND EXECUTORS ///////////////////////////////////////////////
 
+    // 命令执行器
     protected CommandExecutor commandExecutor;
+    // 命令拦截器
     protected Collection<? extends CommandInterceptor> defaultCommandInterceptors;
+    // 默认执行命令配置
     protected CommandConfig defaultCommandConfig;
+    // 数据库约束命令执行配置
     protected CommandConfig schemaCommandConfig;
+    // 命令上下文创建工厂
     protected CommandContextFactory commandContextFactory;
+    // 最后的拦截执行器
     protected CommandInterceptor commandInvoker;
 
     protected AgendaOperationRunner agendaOperationRunner = (commandContext, runnable) -> runnable.run();
@@ -198,6 +205,7 @@ public abstract class AbstractEngineConfiguration {
     protected List<CommandInterceptor> customPostCommandInterceptors;
     protected List<CommandInterceptor> commandInterceptors;
 
+    // 命名的服务配置
     protected Map<String, AbstractEngineConfiguration> engineConfigurations = new HashMap<>();
     protected Map<String, AbstractServiceConfiguration> serviceConfigurations = new HashMap<>();
 
@@ -207,6 +215,7 @@ public abstract class AbstractEngineConfiguration {
      */
     protected boolean useClassForNameClassLoading = true;
 
+    // 监听器
     protected List<EngineLifecycleListener> engineLifecycleListeners;
 
     // Event Registry //////////////////////////////////////////////////
@@ -214,6 +223,7 @@ public abstract class AbstractEngineConfiguration {
 
     // MYBATIS SQL SESSION FACTORY /////////////////////////////////////
 
+    // mybatis工具相关
     protected boolean isDbHistoryUsed = true;
     protected DbSqlSessionFactory dbSqlSessionFactory;
     protected SqlSessionFactory sqlSessionFactory;
@@ -236,9 +246,12 @@ public abstract class AbstractEngineConfiguration {
 
     public int DEFAULT_MAX_NR_OF_STATEMENTS_BULK_INSERT_SQL_SERVER = 55; // currently Execution has most params (35). 2000 / 35 = 57.
 
+    // 表mapper文件
     protected String mybatisMappingFile;
+    // 客户自定义mapper文件
     protected Set<Class<?>> customMybatisMappers;
     protected Set<String> customMybatisXMLMappers;
+
     protected List<Interceptor> customMybatisInterceptors;
 
     protected Set<String> dependentEngineMyBatisXmlMappers;
